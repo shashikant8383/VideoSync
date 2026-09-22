@@ -1,0 +1,14 @@
+{
+  "name": "channel-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Linear HLS channel origin, ffmpeg supervisor and device pairing API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "content": "./make-content.sh"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

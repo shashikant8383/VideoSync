@@ -1,0 +1,12 @@
+{
+  "appId": "com.pocvideo.channeltv",
+  "appName": "Channel TV",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

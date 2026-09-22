@@ -1,0 +1,16 @@
+{
+  "channels": [
+    {
+      "id": "cartoons",
+      "name": "Cartoons"
+    },
+    {
+      "id": "shorts",
+      "name": "Animation Shorts"
+    },
+    {
+      "id": "classics",
+      "name": "Classics"
+    }
+  ]
+}

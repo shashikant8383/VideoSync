@@ -1,0 +1,43 @@
+node_modules/
+dist/
+.DS_Store
+
+# ---------------------------------------------------------------------------
+# Channel content
+#
+# Source clips are fetched, not authored - ./fetch-content.sh rebuilds them
+# from the Blender open movies. They are ~130MB and would bloat the repo for
+# no benefit, since anyone cloning can regenerate them in a few minutes.
+# ---------------------------------------------------------------------------
+channel-server/content/**/*.mp4
+
+# ---------------------------------------------------------------------------
+# Live stream output
+#
+# Entirely transient. ffmpeg rewrites the manifest every few seconds and
+# deletes segments as they age out - only ~7 exist at any moment. Committing
+# these would capture a meaningless 30-second slice of a channel.
+# ---------------------------------------------------------------------------
+channel-server/public/channels/
+
+# Runtime state: pairing tokens. Machine-specific and sensitive.
+channel-server/devices.json
+channel-server/devices.json.tmp
+
+# ---------------------------------------------------------------------------
+# Android build output
+#
+# android/ itself IS committed - it holds real customisation (the TV
+# manifest with LEANBACK_LAUNCHER, and MainActivity's keep-screen-on and
+# autoplay settings). Only generated output is excluded.
+# ---------------------------------------------------------------------------
+tv-app/android/app/build/
+tv-app/android/build/
+tv-app/android/.gradle/
+tv-app/android/local.properties
+tv-app/android/app/src/main/assets/public/
+tv-app/android/app/src/main/assets/capacitor.config.json
+
+# Generated MSDF font atlases (rebuilt by the Blits vite plugin)
+tv-app/public/fonts/*.msdf.json
+tv-app/public/fonts/*.msdf.png

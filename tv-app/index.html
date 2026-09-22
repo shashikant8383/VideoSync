@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Channel TV</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        overflow: hidden;
+      }
+
+      /* No cursor on a TV. */
+      * {
+        cursor: none;
+      }
+
+      /*
+       * The Lightning canvas sits above the video element so overlays can
+       * be drawn on top of the picture. It does not swallow input, and it
+       * is transparent wherever nothing is painted, so the video shows
+       * through everywhere except the overlay itself.
+       */
+      #app {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /*
+       * Lightning draws a fixed 1920x1080 stage. A TV WebView reports a
+       * CSS viewport that is usually smaller than that (1080p at dpr 2 is
+       * 960x540 CSS pixels), so at 1:1 only the top-left corner of the
+       * stage is visible.
+       *
+       * Keeping the canvas backing store at 1920x1080 and letting CSS
+       * scale it to the viewport renders the whole stage, stays crisp on
+       * high-dpr panels, and means layout coordinates remain honest
+       * 1080p values on every platform - the same reason this survives
+       * being repackaged for Tizen and webOS unchanged.
+       */
+      #app > canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>
